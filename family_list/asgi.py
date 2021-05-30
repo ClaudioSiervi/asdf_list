@@ -1,5 +1,5 @@
 """
-ASGI config for asdf_list project.
+ASGI config for family_list project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'asdf_list.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'family_list.settings')
 
 application = get_asgi_application()
