@@ -6,9 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ModelMixin(models.Model):
-
-    history = HistoricalRecords(inherit=True)
-
+    
     id = models.UUIDField(
         verbose_name=_("Id"),
         primary_key=True,

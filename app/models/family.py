@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from app.models.mixin import ModelMixin
+from app.models.user import User
 
 
 class Family(ModelMixin):
@@ -11,9 +12,10 @@ class Family(ModelMixin):
         max_length=50,
         )
     members = models.ForeignKey(
-        "app.user", 
+        User, 
         verbose_name=_("Membros da família"), 
-        on_delete=models.RESTRICT,    
+        on_delete=models.RESTRICT, 
+        related_name="family"   
     )
 
     class Meta:

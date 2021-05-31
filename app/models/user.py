@@ -15,7 +15,7 @@ class User(ModelMixin):
         auto_now=False, 
         auto_now_add=False,
         )
-    gender = models.models.CharField(
+    gender = models.CharField(
         _("Gênero"), 
         max_length=50
         )

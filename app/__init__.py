@@ -1,3 +1,5 @@
+default_app_config = 'app.apps.AppConfig'
+
 __authors__ = ["Claudio Siervi", "Luciana Lima"]
 __emails__ = [
     "lucianalima.lml@gmail.com",
@@ -5,5 +7,3 @@ __emails__ = [
 ]
 
 __version__ = "0.0.1"
-
-default_app_config = "app.apps.AppConfig"
