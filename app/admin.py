@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from app.models.user import User, Family
+
+admin.site.register(User)
+
+admin.site.register(Family)
