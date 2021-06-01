@@ -1,0 +1,9 @@
+<h1>Todas as tarefas</h1>
+{% for task in object_list %}
+<ul>
+<li>Title: {{ task.name }}</li>
+{% comment %} <li>Subtitle: {{ book.subtitle }}</li>
+<li>Author: {{ book.author }}</li>
+<li>ISBN: {{ book.isbn }}</li> {% endcomment %}
+</ul>
+{% endfor %}

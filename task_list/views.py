@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import User
 
-# Create your views here.
+class TaskListView(ListView):
+    model = User
+    template_name = 'task_list/task_list.html'

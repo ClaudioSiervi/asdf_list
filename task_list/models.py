@@ -1,8 +1,9 @@
 import uuid
 
 from django.db import models
+from django.contrib.auth.models import UserManager
 from django.utils.translation import gettext_lazy as _
-
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
 class ModelMixin(models.Model):
 
@@ -44,7 +45,19 @@ class ModelMixin(models.Model):
         abstract = True
 
 
-class User(ModelMixin):
+class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
+    username = models.CharField(
+        _('username'),
+        max_length=150,
+        unique=True,
+    )
+    email = models.EmailField(
+        _("Email"), 
+        unique=True
+        )
     name = models.CharField(
         _("Nome"), 
         max_length=50,
@@ -53,12 +66,28 @@ class User(ModelMixin):
         _("Data aniversário"), 
         auto_now=False, 
         auto_now_add=False,
+        blank=True,
+        null=True,
         )
     gender = models.CharField(
         _("Gênero"), 
         max_length=50
         )
+    is_superuser = models.BooleanField(
+        _('É super usuário'),
+        default=False,
+    )
+    is_staff = models.BooleanField(
+        _('É da organização'),
+        default=False,
+    )
+    is_active = models.BooleanField(
+        _('ativo'),
+        default=True,
+    )
 
+
+    objects = UserManager()
     class Meta:
         db_table = "users"
         verbose_name = _("Usuário")
@@ -74,10 +103,10 @@ class Family(ModelMixin):
         _("Nome grupo familiar"), 
         max_length=50,
         )
-    members = models.ForeignKey(
+    members = models.ManyToManyField(
         User, 
-        verbose_name=_("Membros da família"), 
-        on_delete=models.RESTRICT,    
+        verbose_name=_("Membros da família"),    
+        related_name='family',    
     )
 
     class Meta:
