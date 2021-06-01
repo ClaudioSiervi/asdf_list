@@ -8,31 +8,28 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 class ModelMixin(models.Model):
 
     id = models.UUIDField(
-        verbose_name=_("Id"),
+        _("ID"),
         primary_key=True,
         default=uuid.uuid4,
         editable=False,
         unique=True,
     )
     created_at = models.DateTimeField(
-        verbose_name=_("Created at"),
+        _("Created at"),
         auto_now_add=True,
         null=False,
         blank=False,
-        help_text=_("Creation datetime"),
     )
     updated_at = models.DateTimeField(
-        verbose_name=_("Updated at"),
+        _("Updated at"),
         auto_now=True,
         null=True,
         blank=False,
-        help_text=_("Update datetime"),
     )
     deleted_at = models.DateTimeField(
-        verbose_name=_("Deleted at"),
+        _("Deleted at"),
         null=True,
         blank=True, 
-        help_text=_("Deletion datetime"),
         )
 
     def __str__(self):
@@ -50,7 +47,7 @@ class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
     REQUIRED_FIELDS = ['username']
 
     username = models.CharField(
-        _('username'),
+        _('Username'),
         max_length=150,
         unique=True,
     )
@@ -59,39 +56,38 @@ class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
         unique=True
         )
     name = models.CharField(
-        _("Nome"), 
+        _("Name"), 
         max_length=50,
         )
     birthday = models.DateField(
-        _("Data aniversário"), 
+        _("Birthday date"), 
         auto_now=False, 
         auto_now_add=False,
         blank=True,
         null=True,
         )
     gender = models.CharField(
-        _("Gênero"), 
+        _("Gender"), 
         max_length=50
         )
     is_superuser = models.BooleanField(
-        _('É super usuário'),
+        _('Is super user?'),
         default=False,
     )
     is_staff = models.BooleanField(
-        _('É da organização'),
+        _('Is staff?'),
         default=False,
     )
     is_active = models.BooleanField(
-        _('ativo'),
+        _('Is active?'),
         default=True,
     )
-
 
     objects = UserManager()
     class Meta:
         db_table = "users"
-        verbose_name = _("Usuário")
-        verbose_name_plural = _("Usuários")
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
         ordering = ["name"]
 
     def __str__(self) -> str:
@@ -100,19 +96,19 @@ class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
 
 class Family(ModelMixin):
     name = models.CharField(
-        _("Nome grupo familiar"), 
+        _("Family denomination"), 
         max_length=50,
         )
     members = models.ManyToManyField(
         User, 
-        verbose_name=_("Membros da família"),    
+        verbose_name=_("Family members"),    
         related_name='family',    
     )
 
     class Meta:
         db_table = "families"
-        verbose_name = _("Família")
-        verbose_name_plural = _("Famílias")
+        verbose_name = _("Family")
+        verbose_name_plural = _("Families")
         ordering = ["name"]
 
     def __str__(self) -> str:
