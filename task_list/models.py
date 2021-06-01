@@ -1,3 +1,5 @@
+from datetime import datetime
+from task_list.enums import TaskStatus
 import uuid
 
 from django.db import models
@@ -32,10 +34,10 @@ class ModelMixin(models.Model):
         blank=True, 
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.pk)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}<{self}>"
 
     class Meta:
@@ -113,3 +115,73 @@ class Family(ModelMixin):
 
     def __str__(self) -> str:
         return self.name 
+
+
+class Task(ModelMixin):
+    name = models.CharField(
+        _("Task name"), 
+        max_length=50,
+        )
+    description = models.CharField(
+        _("Task description"), 
+        max_length=50,
+        )
+    status =  models.CharField(
+        _("Status"),
+        max_length=10,
+        choices=TaskStatus.choices,
+        default=TaskStatus.CREATED,
+    )
+    owner = models.ForeignKey(
+        User,
+        verbose_name=_("Owner"),
+        on_delete=models.PROTECT,
+    )
+    rating = models.IntegerField(
+        _("Rating"), 
+        null=True,
+        blank=True,
+        default=None
+    )
+    comments = models.CharField(
+        _("Task comments"), 
+        max_length=200,
+        )
+    date = models.DateTimeField(
+        _('data de criação'),
+        default=datetime.utcnow()
+        )
+
+
+
+class Event(ModelMixin):
+    name = models.CharField(
+        _("Task name"), 
+        max_length=50,
+        )
+    description = models.CharField(
+        _("Task description"), 
+        max_length=50,
+        )
+    rating = models.IntegerField(
+        _("Rating"), 
+        null=True,
+        blank=True,
+        default=None
+    )
+    start = models.DateField(
+        _('Start date')
+        )
+    finish = models.DateField(
+        _('Finish date'),
+        blank=True, 
+        null=True,
+        )
+    tasks = models.ManyToManyField(
+        Task,
+        verbose_name=_("Tasks"),
+        related_name="event"
+    )
+    # qtt_day
+    # qtt_week
+    # qtt_month
