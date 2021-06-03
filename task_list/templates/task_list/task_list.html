@@ -1,9 +1,27 @@
-<h1>Todas as tarefas</h1>
-{% for task in object_list %}
-<ul>
-<li>Title: {{ task.name }}</li>
-{% comment %} <li>Subtitle: {{ book.subtitle }}</li>
-<li>Author: {{ book.author }}</li>
-<li>ISBN: {{ book.isbn }}</li> {% endcomment %}
-</ul>
-{% endfor %}
+<h1>Tarefas do dia {{ now }} </h1>
+
+<table>
+    <tr>
+      <th>Done</th>
+      <th>Description</th>
+      <th>User</th>
+      <th>Rating</th>
+      <th>Date</th>
+    </tr>
+    {% for task in object_list %}
+    <tr>
+      <td><input type="checkbox"></td>
+      <td>{{ task.name }}</td>
+      <td>{{ task.owner }}</td>
+      <td>{{ task.rating }}</td>
+      <td>{{ task.date | date }}</td>
+      
+      <td><button>Edit</button><a>home</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<button>+ Add new task</button>
+
+<a href="{% url 'logout'%}">Logout</a>
+
