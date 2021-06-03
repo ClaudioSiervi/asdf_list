@@ -7,8 +7,8 @@ from django.contrib.auth.models import UserManager
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
-class ModelMixin(models.Model):
 
+class ModelMixin(models.Model):
     id = models.UUIDField(
         _("ID"),
         primary_key=True,
@@ -44,10 +44,8 @@ class ModelMixin(models.Model):
         abstract = True
 
 
-class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
 
+class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
     username = models.CharField(
         _('Username'),
         max_length=150,
@@ -86,6 +84,10 @@ class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
     )
 
     objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
     class Meta:
         db_table = "users"
         verbose_name = _("User")
@@ -94,6 +96,7 @@ class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
 
     def __str__(self) -> str:
         return self.name
+
 
 
 class Family(ModelMixin):
@@ -115,6 +118,7 @@ class Family(ModelMixin):
 
     def __str__(self) -> str:
         return self.name 
+
 
 
 class Task(ModelMixin):

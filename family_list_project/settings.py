@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 import environ
-
+# from django.contrib.auth import get_user_model
+# User = get_user_model()
 
 env = environ.Env(
     # set casting, default value
@@ -39,6 +40,7 @@ SECRET_KEY = env('SECRET_KEY')
 HOST = env('HOST')
 
 ALLOWED_HOSTS = []
+
 
 AUTH_USER_MODEL = 'task_list.User'
 

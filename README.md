@@ -9,3 +9,7 @@ Para ativar o ambiente virtual, na raíz do projeto:
 
 Para rodar o projeto:    
 `python manage.py runserver 8099`    
+
+
+Home http://localhost:8099/   
+Backoffice http://localhost:8099/admin
