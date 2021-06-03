@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Task
 from datetime import datetime
 from django.conf import settings
@@ -12,3 +12,8 @@ class TaskListView(ListView):
         context['now'] = datetime.now().date()
         context["host"] = settings.HOST
         return context
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'task_list/task_detail.html'
+        

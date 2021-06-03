@@ -16,12 +16,12 @@
       <td>{{ task.rating }}</td>
       <td>{{ task.date | date }}</td>
       
-      <td><button>Edit</button><a>home</a></td>
+      <td><button><a href="/tasks/{{ task.id }}">Detail</a></button></td>
     </tr>
     {% endfor %}
 </table>
 
 <button>+ Add new task</button>
 
-<a href="{% url 'logout'%}">Logout</a>
+
 
