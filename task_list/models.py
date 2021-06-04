@@ -95,7 +95,7 @@ class User(AbstractBaseUser, PermissionsMixin, ModelMixin):
         ordering = ["name"]
 
     def __str__(self) -> str:
-        return self.name
+        return self.username
 
 
 
