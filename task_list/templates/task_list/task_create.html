@@ -1,7 +1,7 @@
 {% extends 'task_list/base.html' %}
 {% block content %}
 
-<h1>Task detail</h1>
+<h1>Task create</h1>
 
 <form>
   <div>
@@ -23,7 +23,7 @@
     {% csrf_token %} 
     {{form.as_p}}
     <br>
-    <input type="submit" value ="Edit"/> 
+    <input type="submit" class="btn btn-dark" value ="Create"/> 
   </form>
 
 <p>{{ task.name }} <br>

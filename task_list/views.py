@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 from .models import Task
-from .forms import CreateUserForm
+from .forms import CreateUserForm, CreateTaskForm, DetailTaskForm
 from datetime import datetime
 from django.conf import settings
 from django.shortcuts import render, redirect
@@ -35,4 +35,28 @@ def create_user_view(request):
 
 class TaskDetailView(DetailView):
     model = Task
+    form_class = DetailTaskForm
     template_name = 'task_list/task_detail.html'
+
+
+def create_task_view(request):
+    if request.method == "POST":
+        form = CreateTaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = CreateTaskForm()
+    return render(request, "task_list/task_create.html", {"form": form})
+
+# TODO terminar
+def detail_task_view(request, pk):
+    ...
+#     if request.method == "POST":
+#         form = DetailTaskForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect("home")
+#     else:
+#         form = DetailTaskForm()
+#     return render(request, "task_list/task_detail.html", {"form": form})

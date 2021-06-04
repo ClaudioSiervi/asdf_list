@@ -129,17 +129,23 @@ class Task(ModelMixin):
     description = models.CharField(
         _("Task description"), 
         max_length=50,
+        blank=True,
+        null=True,
         )
     status =  models.CharField(
         _("Status"),
         max_length=10,
         choices=TaskStatus.choices,
         default=TaskStatus.CREATED,
+        blank=True,
+        null=True,
     )
     owner = models.ForeignKey(
         User,
         verbose_name=_("Owner"),
         on_delete=models.PROTECT,
+        blank=True, 
+        null=True,
     )
     rating = models.IntegerField(
         _("Rating"), 
@@ -150,10 +156,14 @@ class Task(ModelMixin):
     comments = models.CharField(
         _("Task comments"), 
         max_length=200,
+        blank=True,
+        null=True,
         )
     date = models.DateTimeField(
         _('data de criação'),
-        default=datetime.utcnow()
+        default=datetime.utcnow(),
+        blank=True,
+        null=True,
         )
 
 
@@ -166,15 +176,18 @@ class Event(ModelMixin):
     description = models.CharField(
         _("Task description"), 
         max_length=50,
+        blank=True, 
+        null=True,
+        default=None
         )
     rating = models.IntegerField(
         _("Rating"), 
         null=True,
-        blank=True,
+        blank=True, 
         default=None
     )
     start = models.DateField(
-        _('Start date')
+        _('Start date'),
         )
     finish = models.DateField(
         _('Finish date'),
