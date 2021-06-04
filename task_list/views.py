@@ -1,4 +1,5 @@
-from django.views.generic import CreateView, ListView
+
+from django.views.generic import CreateView, ListView, DetailView
 from .models import Task, User
 from .forms import CreateUserForm
 from datetime import datetime
@@ -31,3 +32,8 @@ def create_user_view(request):
         form = CreateUserForm()
         
     return render(request, "task_list/users/create.html", {"form": form})
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'task_list/task_detail.html'
+
