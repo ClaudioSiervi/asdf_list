@@ -25,3 +25,9 @@ class DetailTaskForm(forms.ModelForm):
         model = Task
         fields = ("name", "owner")
 
+class UpdateTaskForm(forms.ModelForm):
+    name = forms.CharField()
+    class Meta:
+        model = Task
+        fields = ("name", "owner")
+

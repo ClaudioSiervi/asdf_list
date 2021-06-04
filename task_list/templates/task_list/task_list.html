@@ -18,12 +18,12 @@
       <td>{{ task.owner }}</td>
       <td>{{ task.rating }}</td>
       <td>{{ task.date | date }}</td>
-      <td><a class="btn btn-dark" href="/tasks/{{ task.id }}" role="button">Detail</a></td>
+      <td><a class="btn btn-dark" href="/tasks/{{ task.id }}" role="button">Update</a></td>
     </tr>
     {% endfor %}
 </table>
 
-<a class="btn btn-dark" href="/tasks/create" role="button">Create</a>
+<a class="btn btn-dark" href="/tasks/" role="button">Create</a>
 
 {% endblock %}
 

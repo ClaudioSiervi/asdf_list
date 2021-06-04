@@ -3,6 +3,7 @@ from task_list.enums import TaskStatus
 import uuid
 
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import UserManager
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
@@ -166,6 +167,8 @@ class Task(ModelMixin):
         null=True,
         )
 
+    def get_absolute_url(self):
+        return reverse('task-update', kwargs={'pk': self.pk})
 
 
 class Event(ModelMixin):

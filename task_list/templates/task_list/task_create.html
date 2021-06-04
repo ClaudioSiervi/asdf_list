@@ -1,40 +1,15 @@
 {% extends 'task_list/base.html' %}
 {% block content %}
 
-<h1>Task create</h1>
+  <h1>Task create</h1>
 
-<form>
-  <div>
-    <label>Name</label>
-    <input id="name" {{ task.name }}>
-  </div>
-
-
-  <form>
-    <div class="form-group">
-      <label for="formControlRange">Difficulty</label>
-      <input type="range" class="form-control-range" id="formControlRange">
-    </div>
-  </form>
-
-</form>
-
-<form method="POST">
+  <form method="POST">
     {% csrf_token %} 
     {{form.as_p}}
     <br>
     <input type="submit" class="btn btn-dark" value ="Create"/> 
   </form>
 
-<p>{{ task.name }} <br>
-{{ task.description }} <br>
-{{ task.status }}<br>
-{{ task.owner }}<br>
-{{ task.rating }}<br>
-{{ task.comments }}<br>
-{{ task.date }}<br>
-</p>
-
-<a class="btn btn-dark" href="/tasks/" role="button">Back</a>
+  <a class="btn btn-dark" href="/" role="button">Back</a>
 
 {% endblock %}

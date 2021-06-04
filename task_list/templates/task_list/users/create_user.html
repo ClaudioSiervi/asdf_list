@@ -1,7 +1,10 @@
+{% extends 'task_list/base.html' %}
+{% block content %}
 
-<form method="POST">
-    {% csrf_token %} 
-    {{form.as_p}}
-    <br>
-    <input type="submit" value ="Register"/> 
-  </form>
+  <form method="POST">
+      {% csrf_token %} 
+      {{form.as_p}}
+      <br>
+      <input type="submit" value ="Register"/> 
+    </form>
+{% endblock %}
