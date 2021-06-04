@@ -1,7 +1,10 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Task
+from .forms import CreateUserForm
 from datetime import datetime
 from django.conf import settings
+from django.shortcuts import render, redirect
+
 
 class TaskListView(ListView):
     model = Task
@@ -12,3 +15,23 @@ class TaskListView(ListView):
         context['now'] = datetime.now().date()
         context["host"] = settings.HOST
         return context
+    
+# class CreateUserListView(CreateView):
+#     model = User
+#     form_class = CreateUserForm
+#     template_name = "task_list/users/create.html"
+
+def create_user_view(request):
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = CreateUserForm()
+        
+    return render(request, "task_list/users/create_user.html", {"form": form})
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'task_list/task_detail.html'

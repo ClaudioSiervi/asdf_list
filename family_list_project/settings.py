@@ -14,7 +14,6 @@ import os
 from pathlib import Path
 import environ
 
-
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -52,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    "django_extensions", 
+    
     "task_list.apps.TaskListConfig"
 ]
 

@@ -8,6 +8,7 @@ django = "*"
 pytest-django = "*"
 django-environ = "*"
 django-simple-history = "*"
+django-extensions = "*"
 
 [dev-packages]
 
