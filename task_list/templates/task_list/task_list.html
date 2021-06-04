@@ -1,6 +1,9 @@
-<h1>Tarefas do dia {{ now }} </h1>
+{% extends 'task_list/base.html' %}
+{% block content %}
 
-<table>
+<h1>Day {{ now }} </h1>
+
+<table class="table">
     <tr>
       <th>Done</th>
       <th>Description</th>
@@ -15,13 +18,14 @@
       <td>{{ task.owner }}</td>
       <td>{{ task.rating }}</td>
       <td>{{ task.date | date }}</td>
-      
-      <td><button><a href="/tasks/{{ task.id }}">Detail</a></button></td>
+      <td><a class="btn btn-dark" href="/tasks/{{ task.id }}" role="button">Detail</a></td>
     </tr>
     {% endfor %}
 </table>
 
 <button>+ Add new task</button>
+
+{% endblock %}
 
 
 
