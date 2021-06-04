@@ -8,11 +8,11 @@ from django.shortcuts import render, redirect
 
 class TaskListView(ListView):
     model = Task
-    template_name = 'task_list/task_list.html'
+    template_name = "task_list/task_list.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['now'] = datetime.now().date()
+        context["now"] = datetime.now().date()
         context["host"] = settings.HOST
         return context
     
@@ -29,8 +29,9 @@ def create_user_view(request):
             return redirect("home")
     else:
         form = CreateUserForm()
-        
+
     return render(request, "task_list/users/create_user.html", {"form": form})
+
 
 class TaskDetailView(DetailView):
     model = Task

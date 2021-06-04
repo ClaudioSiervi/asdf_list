@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import environ
 
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -38,6 +39,7 @@ SECRET_KEY = env('SECRET_KEY')
 HOST = env('HOST')
 
 ALLOWED_HOSTS = []
+
 
 AUTH_USER_MODEL = 'task_list.User'
 
