@@ -17,18 +17,24 @@ class CreateTaskForm(forms.ModelForm):
     rating = forms.IntegerField(min_value=0, max_value=10)
     class Meta:
         model = Task
-        fields = ("name", "description", "status", "owner", "rating", "comments", "task_date_time") 
+        fields = ("name", "description", "is_concluded", "owner", "rating", "comments", "task_date_time") 
+        widgets = {
+            'name': forms.Textarea(attrs={'cols': 50, 'rows': 2}), 
+            'description': forms.Textarea(attrs={'cols': 40, 'rows': 5}),
+        }
 
 class DetailTaskForm(forms.ModelForm):
     name = forms.CharField()
     class Meta:
         model = Task
-        fields = ("name", "owner")
+        fields = ("name", "description", "is_concluded", "status", "owner", "rating", "comments", "task_date_time") 
+
+
 
 class UpdateTaskForm(forms.ModelForm):
     name = forms.CharField()
     rating = forms.IntegerField(min_value=0, max_value=10)
     class Meta:
         model = Task
-        fields = ("name", "description", "status", "owner", "rating", "comments", "task_date_time") 
+        fields = ("name", "description","is_concluded",  "status", "owner", "rating", "comments", "task_date_time") 
 
