@@ -5,36 +5,19 @@
 
 <form>
   <div>
-    <label>Name</label>
-    <input id="name" {{ task.name }}>
+    <div>Name: {{task.name}}</div>
+    <div>Description: {{task.description}}</div>
+    <div>Status: {{task.status}}</div>
+    <div>Owner: {{task.owner}}</div>
+    <div>Rating: {{task.rating}}</div>
+    <div>Comments: {{task.comments}}</div>
+    <div>Task date: {{task.task_date_time}}</div>
   </div>
-
-
-  <form>
-    <div class="form-group">
-      <label for="formControlRange">Difficulty</label>
-      <input type="range" class="form-control-range" id="formControlRange">
-    </div>
-  </form>
-
 </form>
 
-<form method="POST">
-    {% csrf_token %} 
-    {{form.as_p}}
-    <br>
-    <input type="submit" value ="Edit"/> 
-  </form>
-
-<p>{{ task.name }} <br>
-{{ task.description }} <br>
-{{ task.status }}<br>
-{{ task.owner }}<br>
-{{ task.rating }}<br>
-{{ task.comments }}<br>
-{{ task.date }}<br>
-</p>
-
+<td><a class="btn btn-dark" href="/tasks/{{ task.id }}" role="button">Update</a></td>
+<td><a class="btn btn-dark" href="/tasks/{{ task.id }}/delete/" role="button">Delete</a></td>
+<br></br>
 <a class="btn btn-dark" href="/" role="button">Back</a>
 
 {% endblock %}
