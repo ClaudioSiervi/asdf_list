@@ -161,7 +161,7 @@ class Task(ModelMixin):
         null=True,
         )
     date = models.DateTimeField(
-        _('data de criação'),
+        _('Task date'),
         default=datetime.utcnow(),
         blank=True,
         null=True,
@@ -202,6 +202,10 @@ class Event(ModelMixin):
         verbose_name=_("Tasks"),
         related_name="event"
     )
-    # qtt_day
-    # qtt_week
-    # qtt_month
+    owner = models.ForeignKey(
+        User,
+        verbose_name=_("Owner"),
+        on_delete=models.PROTECT,
+        blank=True, 
+        null=True,
+    )
