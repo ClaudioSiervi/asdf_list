@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from task_list.models import User, Family, Task, Event
+from task_list.models import User, Family, Task
+from event_list.models import Event
 
 admin.site.register(User)
 admin.site.register(Family) 

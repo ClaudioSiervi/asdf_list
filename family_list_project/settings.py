@@ -55,7 +55,8 @@ INSTALLED_APPS = [
 
     "django_extensions", 
     
-    "task_list.apps.TaskListConfig"
+    "task_list.apps.TaskListConfig",
+    "event_list.apps.EventListConfig"
 ]
 
 MIDDLEWARE = [

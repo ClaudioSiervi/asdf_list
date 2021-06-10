@@ -1,6 +1,6 @@
 from datetime import datetime
 from task_list.enums import TaskStatus
-import uuid
+
 
 from django.db import models
 from django.urls import reverse
@@ -9,40 +9,42 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
 
-class ModelMixin(models.Model):
-    id = models.UUIDField(
-        _("ID"),
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False,
-        unique=True,
-    )
-    created_at = models.DateTimeField(
-        _("Created at"),
-        auto_now_add=True,
-        null=False,
-        blank=False,
-    )
-    updated_at = models.DateTimeField(
-        _("Updated at"),
-        auto_now=True,
-        null=True,
-        blank=False,
-    )
-    deleted_at = models.DateTimeField(
-        _("Deleted at"),
-        null=True,
-        blank=True, 
-        )
+from family_list_project.mixins.model import ModelMixin
 
-    def __str__(self) -> str:
-        return str(self.pk)
+# class ModelMixin(models.Model):
+#     id = models.UUIDField(
+#         _("ID"),
+#         primary_key=True,
+#         default=uuid.uuid4,
+#         editable=False,
+#         unique=True,
+#     )
+#     created_at = models.DateTimeField(
+#         _("Created at"),
+#         auto_now_add=True,
+#         null=False,
+#         blank=False,
+#     )
+#     updated_at = models.DateTimeField(
+#         _("Updated at"),
+#         auto_now=True,
+#         null=True,
+#         blank=False,
+#     )
+#     deleted_at = models.DateTimeField(
+#         _("Deleted at"),
+#         null=True,
+#         blank=True, 
+#         )
 
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}<{self}>"
+#     def __str__(self) -> str:
+#         return str(self.pk)
 
-    class Meta:
-        abstract = True
+#     def __repr__(self) -> str:
+#         return f"{self.__class__.__name__}<{self}>"
+
+#     class Meta:
+#         abstract = True
 
 
 
@@ -179,43 +181,3 @@ class Task(ModelMixin):
 
     def get_absolute_url(self):
         return reverse('task-update', kwargs={'pk': self.pk})
-
-
-class Event(ModelMixin):
-    name = models.CharField(
-        _("Task name"), 
-        max_length=50,
-        )
-    description = models.CharField(
-        _("Task description"), 
-        max_length=50,
-        blank=True, 
-        null=True,
-        default=None
-        )
-    rating = models.IntegerField(
-        _("Rating"), 
-        null=True,
-        blank=True, 
-        default=None
-    )
-    start = models.DateField(
-        _('Start date'),
-        )
-    finish = models.DateField(
-        _('Finish date'),
-        blank=True, 
-        null=True,
-        )
-    tasks = models.ManyToManyField(
-        Task,
-        verbose_name=_("Tasks"),
-        related_name="event"
-    )
-    owner = models.ForeignKey(
-        User,
-        verbose_name=_("Owner"),
-        on_delete=models.PROTECT,
-        blank=True, 
-        null=True,
-    )
