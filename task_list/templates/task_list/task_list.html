@@ -10,10 +10,11 @@
       <th>User</th>
       <th>Rating</th>
       <th>Task Date</th>
+      <th><a class="btn btn-dark" href="/tasks/" role="button">Create</a></th>
     </tr>
     {% for task in object_list %}
     <tr>
-      <td><input type="checkbox"></td>
+      <td><input type="checkbox" id="{{ todo.is_concluded }}" name="is_concluded" {%if task.is_concluded%}checked{% endif %}></td>
       <td>{{ task.name }}</td>
       <td>{{ task.owner }}</td>
       <td>{{ task.rating }}</td>
@@ -25,7 +26,7 @@
     {% endfor %}
 </table>
 
-<a class="btn btn-dark" href="/tasks/" role="button">Create</a>
+
 
 {% endblock %}
 
