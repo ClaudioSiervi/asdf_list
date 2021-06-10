@@ -168,9 +168,9 @@ class Task(ModelMixin):
         )
     is_concluded = models.BooleanField(
         _('Is concluded?'),
-        default=True,
+        default=False,
     )
-    date_conclusion = models.DateTimeField(
+    conclusion_date = models.DateTimeField(
         _('Task date'),
         default=datetime.utcnow(),
         blank=True,
