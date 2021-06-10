@@ -14,10 +14,10 @@ class CreateUserForm(UserCreationForm):
 
 class CreateTaskForm(forms.ModelForm):
     name = forms.CharField()
+    rating = forms.IntegerField(min_value=0, max_value=10)
     class Meta:
         model = Task
-        fields = ("name", "owner")
-
+        fields = ("name", "description", "status", "owner", "rating", "comments", "date") 
 
 class DetailTaskForm(forms.ModelForm):
     name = forms.CharField()
@@ -27,7 +27,8 @@ class DetailTaskForm(forms.ModelForm):
 
 class UpdateTaskForm(forms.ModelForm):
     name = forms.CharField()
+    rating = forms.IntegerField(min_value=0, max_value=10)
     class Meta:
         model = Task
-        fields = ("name", "owner")
+        fields = ("name", "description", "status", "owner", "rating", "comments", "date") 
 

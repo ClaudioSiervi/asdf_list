@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, DeleteView
 from .models import Task
 from .forms import CreateUserForm, CreateTaskForm, DetailTaskForm, UpdateTaskForm
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -13,7 +13,7 @@ def create_user_view(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("home")
+            return redirect("task-list")
     else:
         form = CreateUserForm()
 
@@ -42,3 +42,8 @@ class TaskListView(ListView):
         context["now"] = datetime.now().date()
         context["host"] = settings.HOST
         return context
+
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    success_url = reverse_lazy('task-list')
