@@ -9,7 +9,7 @@
       <th>Description</th>
       <th>User</th>
       <th>Rating</th>
-      <th>Date</th>
+      <th>Task Date</th>
     </tr>
     {% for task in object_list %}
     <tr>
@@ -17,7 +17,8 @@
       <td>{{ task.name }}</td>
       <td>{{ task.owner }}</td>
       <td>{{ task.rating }}</td>
-      <td>{{ task.date | date }}</td>
+      <td>{{ task.task_date_time | date }}</td>
+       <td><a class="btn btn-dark" href="/tasks/{{ task.id }}/detail/" role="button">Detail</a></td>
       <td><a class="btn btn-dark" href="/tasks/{{ task.id }}" role="button">Update</a></td>
       <td><a class="btn btn-dark" href="/tasks/{{ task.id }}/delete/" role="button">Delete</a></td>
     </tr>
