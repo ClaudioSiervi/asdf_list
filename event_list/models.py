@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -26,6 +25,8 @@ class Event(ModelMixin):
     )
     start = models.DateField(
         _('Start date'),
+        null=True,
+        blank=True, 
         )
     finish = models.DateField(
         _('Finish date'),

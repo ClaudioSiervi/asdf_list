@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Event detail</h1>
+
+<form>
+  <div>
+    <div>Name: {{event.name}}</div>
+    <div>Description: {{event.description}}</div>
+    <div>Rating: {{event.rating}}</div>
+    <div>Owner: {{event.owner}}</div>
+    <div>Start: {{event.start}}</div>
+    <div>Finish: {{event.finish}}</div>
+    <div>Tasks: {{event.tasks}}</div>
+  </div>
+</form>
+
+<td><a class="btn btn-dark" href="/events/{{ event.id }}" role="button">Update</a></td>
+<td><a class="btn btn-dark" href="/events/{{ event.id }}/delete/" role="button">Delete</a></td>
+<br></br>
+<a class="btn btn-dark" href="/events/" role="button">Back</a>
+
+{% endblock %}
