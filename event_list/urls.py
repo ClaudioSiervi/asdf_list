@@ -9,9 +9,9 @@ from .views import  (
 
 
 urlpatterns = [
-    path('events/create/', CreateEventView.as_view(), name='event-create'),
-    path('events/<str:pk>/retrieve/', RetrieveEventView.as_view(), name='event-detail'),
-    path('events/<str:pk>/', UpdateEventlView.as_view(), name='event-update'),
-    path('events/<str:pk>/delete/', DeleteEventView.as_view(), name='event-delete'),
-    path('events/', ListEventView.as_view(), name='event-list'),
+    path('create/', CreateEventView.as_view(), name='event-create'),
+    path('<str:pk>/retrieve/', RetrieveEventView.as_view(), name='event-detail'),
+    path('<str:pk>/', UpdateEventlView.as_view(), name='event-update'),
+    path('<str:pk>/delete/', DeleteEventView.as_view(), name='event-delete'),
+    path('', ListEventView.as_view(), name='event-list'),
 ]
