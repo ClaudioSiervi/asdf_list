@@ -9,6 +9,7 @@ pytest-django = "*"
 django-environ = "*"
 django-simple-history = "*"
 django-extensions = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
