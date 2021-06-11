@@ -20,8 +20,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('', include('task_list.urls')),
+    path('', include('event_list.urls')),
 ]
-
-from django.contrib.auth import urls
-urls.urlpatterns
-urls.path

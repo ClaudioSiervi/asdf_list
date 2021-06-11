@@ -6,4 +6,4 @@ from event_list.models import Event
 admin.site.register(User)
 admin.site.register(Family) 
 admin.site.register(Task) 
-admin.site.register(Event) 
+

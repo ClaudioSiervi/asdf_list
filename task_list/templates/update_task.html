@@ -1,4 +1,4 @@
-{% extends 'task_list/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
 
     <form method="post">{% csrf_token %}
@@ -6,7 +6,7 @@
         <input type="submit" value="Update" class="btn btn-dark" href="/tasks/" >
     </form>
     
-<a class="btn btn-dark" href="/" role="button">Back</a>
+<a class="btn btn-dark" href="/tasks/" role="button">Back</a>
 
 {% endblock %}
 

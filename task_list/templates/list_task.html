@@ -1,4 +1,4 @@
-{% extends 'task_list/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
 
 <h1>Day {{ now }} </h1>
@@ -10,7 +10,7 @@
       <th>User</th>
       <th>Rating</th>
       <th>Task Date</th>
-      <th><a class="btn btn-dark" href="/tasks/" role="button">Create</a></th>
+      <th><a class="btn btn-dark" href="/tasks/create/" role="button">Create</a></th>
     </tr>
 
     {% for task in object_list %}

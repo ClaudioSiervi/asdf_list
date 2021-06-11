@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, DeleteView
 from .models import Task
-from .forms import CreateUserForm, CreateTaskForm, DetailTaskForm, UpdateTaskForm
+from .forms import CreateUserForm, CreateTaskForm, UpdateTaskForm
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from datetime import datetime
 from django.conf import settings
@@ -17,29 +17,31 @@ def create_user_view(request):
     else:
         form = CreateUserForm()
 
-    return render(request, "task_list/users/create_user.html", {"form": form})
+    return render(request, "users/create_user.html", {"form": form})
 
 
 class TaskCreateView(CreateView):
     model = Task
     form_class = CreateTaskForm
-    template_name = 'task_list/task_create.html'
+    template_name = 'create_task.html'
     success_url = reverse_lazy('task-list')
 
 
-class TaskDetailView(DetailView):
+class RetrieveTasklView(DetailView):
     model = Task
+    template_name = 'retrieve_task.html'
 
-class TaskUpdatelView(UpdateView):
+
+class UpdateTaskView(UpdateView):
     model = Task
     form_class = UpdateTaskForm
-    template_name = 'task_list/task_update.html'
+    template_name = 'update_task.html'
     success_url = reverse_lazy('task-list')
 
 
-class TaskListView(ListView):
+class ListTaskView(ListView):
     model = Task
-    template_name = "task_list/task_list.html"
+    template_name = "list_task.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -48,6 +50,7 @@ class TaskListView(ListView):
         return context
 
 
-class TaskDeleteView(DeleteView):
+class DeleteTaskView(DeleteView):
     model = Task
+    template_name = 'delete_task.html'
     success_url = reverse_lazy('task-list')

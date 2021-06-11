@@ -23,13 +23,6 @@ class CreateTaskForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'cols': 40, 'rows': 5}),
         }
 
-class DetailTaskForm(forms.ModelForm):
-    name = forms.CharField()
-    class Meta:
-        model = Task
-        fields = ("name", "description", "is_concluded", "status", "owner", "rating", "comments", "task_date_time") 
-
-
 
 class UpdateTaskForm(forms.ModelForm):
     name = forms.CharField()
