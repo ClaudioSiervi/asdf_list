@@ -44,7 +44,7 @@ DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 HOST = env('HOST')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://gentle-journey-77642.herokuapp.com/", "localhost", ]
 
 
 AUTH_USER_MODEL = 'task_list.User'
