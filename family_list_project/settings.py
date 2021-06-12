@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Activate Django-Heroku
-django_heroku.setting(locals())
+django_heroku.settings(locals())
 
 
 
