@@ -10,6 +10,8 @@ django-environ = "*"
 django-simple-history = "*"
 django-extensions = "*"
 psycopg2-binary = "*"
+gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 

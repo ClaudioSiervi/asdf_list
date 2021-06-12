@@ -1,0 +1,1 @@
+web: gunicorn family_list_project.wsgi
