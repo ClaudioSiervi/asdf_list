@@ -1,0 +1,65 @@
+[
+{
+  "model": "users.user",
+  "pk": "481e426a-4cbc-4675-8504-b44f9334e738",
+  "fields": {
+    "password": "asdqwe!@#",
+    "last_login": null,
+    "created_at": "2021-06-15T03:53:28.392Z",
+    "updated_at": "2021-06-15T03:53:43.914Z",
+    "deleted_at": null,
+    "username": "mariajoana",
+    "email": "maria.joana@email.com",
+    "name": "Maria Joana",
+    "birthday": "2021-06-07",
+    "gender": "F",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "5a649f3b-62c1-4127-9190-a2951d36b51b",
+  "fields": {
+    "password": "asdqwe!@#",
+    "last_login": null,
+    "created_at": "2021-06-15T03:52:31.771Z",
+    "updated_at": "2021-06-15T03:52:31.771Z",
+    "deleted_at": null,
+    "username": "joaomaria",
+    "email": "joao.maria@email.com",
+    "name": "João Maria",
+    "birthday": "2021-06-07",
+    "gender": "M",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "b59275ef-1871-4790-9aa6-448537636bf8",
+  "fields": {
+    "password": "pbkdf2_sha256$260000$OcKD9EFCgIqkkpWyZ1kX8k$lB+WdPQsd4Kb6SKXBdiWQXky4wOE2h6t7U33+N7fRRM=",
+    "last_login": "2021-06-15T03:24:38.194Z",
+    "created_at": "2021-06-15T03:23:40.576Z",
+    "updated_at": "2021-06-15T03:23:40.576Z",
+    "deleted_at": null,
+    "username": "superuser",
+    "email": "superuser@email.com",
+    "name": "",
+    "birthday": null,
+    "gender": "",
+    "is_superuser": true,
+    "is_staff": true,
+    "is_active": true,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
