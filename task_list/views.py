@@ -1,23 +1,11 @@
 from django.views.generic import ListView, DetailView, DeleteView
-from .models import Task
-from .forms import CreateUserForm, CreateTaskForm, UpdateTaskForm
+from task_list.models import Task
+from task_list.forms import CreateTaskForm, UpdateTaskForm
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from datetime import datetime
 from django.conf import settings
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
-
-
-def create_user_view(request):
-    if request.method == "POST":
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("task-list")
-    else:
-        form = CreateUserForm()
-
-    return render(request, "users/create_user.html", {"form": form})
+from django.shortcuts import render
 
 
 class TaskCreateView(CreateView):
@@ -54,3 +42,17 @@ class DeleteTaskView(DeleteView):
     model = Task
     template_name = 'delete_task.html'
     success_url = reverse_lazy('task-list')
+
+
+
+def update_task_status_view(request):
+    """ View used in task checkbox """
+
+    is_concluded = False
+
+    if request.GET.get('is_concluded'):
+        is_concluded = True
+
+    return render(request, 'some_template.html',{
+        'is_concluded': is_concluded,
+    })
