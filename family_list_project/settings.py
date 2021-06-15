@@ -45,7 +45,8 @@ HOST = env('HOST')
 ALLOWED_HOSTS = ["https://gentle-journey-77642.herokuapp.com/", "localhost", ]
 
 
-AUTH_USER_MODEL = 'task_list.User'
+AUTH_USER_MODEL = 'users.User'
+AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
 
 # Application definition
 
@@ -60,7 +61,9 @@ INSTALLED_APPS = [
     "django_extensions", 
     
     "task_list.apps.TaskListConfig",
-    "event_list.apps.EventListConfig"
+    "event_list.apps.EventListConfig",
+    "users.apps.UsersConfig",
+    "families.apps.FamiliesConfig",
 ]
 
 MIDDLEWARE = [
@@ -73,6 +76,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+]
+
 
 ROOT_URLCONF = 'family_list_project.urls'
 
@@ -92,7 +104,7 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/tasks/'
 
 WSGI_APPLICATION = 'family_list_project.wsgi.application'
 
