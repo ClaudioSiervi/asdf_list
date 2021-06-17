@@ -13,3 +13,17 @@ Para rodar o projeto:
 
 Home http://localhost:8099/   
 Backoffice http://localhost:8099/admin
+
+
+#### Atalhos para gerenciar o projeto  
+
+- `make help`
+- `make activate`
+- `make deploy`
+- `make down`
+- `make heroku`
+- `make install`
+- `make migrate`
+- `make migration`
+- `make run`
+- `make superuser`
