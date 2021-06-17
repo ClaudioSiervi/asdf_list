@@ -9,6 +9,10 @@ class LoginView(auth_views.LoginView):
     template_name = 'registration/login.html'
 
 
+class LogoutView(auth_views.LogoutView):
+    template_name = 'registration/logged_out.html'
+
+
 def create_user_view(request):
     if request.method == "POST":
         form = CreateUserForm(request.POST)

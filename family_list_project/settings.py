@@ -104,6 +104,7 @@ TEMPLATES = [
     },
 ]
 
+LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/tasks/'
 
 WSGI_APPLICATION = 'family_list_project.wsgi.application'

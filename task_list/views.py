@@ -1,33 +1,36 @@
-from django.views.generic import ListView, DetailView, DeleteView
-from task_list.models import Task
-from task_list.forms import CreateTaskForm, UpdateTaskForm
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from datetime import datetime
+
 from django.conf import settings
 from django.urls import reverse_lazy
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, DetailView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from task_list.models import Task
+from task_list.forms import CreateTaskForm, UpdateTaskForm
 
 
-class TaskCreateView(CreateView):
+class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     form_class = CreateTaskForm
     template_name = 'create_task.html'
     success_url = reverse_lazy('task-list')
 
 
-class RetrieveTasklView(DetailView):
+class RetrieveTasklView(LoginRequiredMixin, DetailView):
     model = Task
     template_name = 'retrieve_task.html'
 
 
-class UpdateTaskView(UpdateView):
+class UpdateTaskView(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = UpdateTaskForm
     template_name = 'update_task.html'
     success_url = reverse_lazy('task-list')
 
 
-class ListTaskView(ListView):
+class ListTaskView(LoginRequiredMixin, ListView):
     model = Task
     template_name = "list_task.html"
 
@@ -38,7 +41,7 @@ class ListTaskView(ListView):
         return context
 
 
-class DeleteTaskView(DeleteView):
+class DeleteTaskView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'delete_task.html'
     success_url = reverse_lazy('task-list')
