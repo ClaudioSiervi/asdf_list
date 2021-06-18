@@ -42,11 +42,9 @@ class ListTaskView(LoginRequiredMixin, ListView):
     template_name = "list_task.html"
     paginate_by = 100
 
-
     def get_queryset(self) -> QuerySet:
         # filters tasks by user family
         return Task.objects.filter(family=self.request.user.family.first())
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
