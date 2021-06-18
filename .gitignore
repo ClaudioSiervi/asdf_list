@@ -41,3 +41,5 @@ users/__pycache__/urls.cpython-39.pyc
 users/__pycache__/views.cpython-39.pyc
 users/migrations/__pycache__/__init__.cpython-39.pyc
 users/migrations/__pycache__/0001_initial.cpython-39.pyc
+family_list_project/__pycache__/settings.cpython-39.pyc
+family_list_project/__pycache__/__init__.cpython-39.pyc

@@ -12,7 +12,7 @@ from event_list.models import Event
 from event_list.facades import create_recurrent_tasks
 
 
-class CreateEventView(CreateView):
+class CreateEventView(LoginRequiredMixin, CreateView):
     model = Event
     form_class = CreateEventForm
     template_name = 'create_event.html'

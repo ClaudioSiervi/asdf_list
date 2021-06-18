@@ -14,20 +14,17 @@ from task_list.models import Task
 from task_list.forms import CreateTaskForm, UpdateTaskForm
 
 
-class TaskCreateView(LoginRequiredMixin, CreateView):
+class CreateTaskView(LoginRequiredMixin, CreateView):
     model = Task
     form_class = CreateTaskForm
     template_name = 'create_task.html'
     success_url = reverse_lazy('task-list')
 
-    def get_success_url(self) -> str:
-        # updates family in task
-        Task.objects.filter(
-            id=self.object.id
-            ).update(
-                family=self.request.user.family.first()
-                )
-
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        task = form.save(commit=False)
+        # add family to task
+        task.family = self.request.user.family.first()
+        return super().form_valid(form)
 
 class RetrieveTasklView(LoginRequiredMixin, DetailView):
     model = Task
