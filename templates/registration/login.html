@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 
 {% block content %}
   <h1>Login</h1>
@@ -21,6 +22,7 @@
   <button type="submit" id="submit">Login</button>
   </form>
 
+    <td><a class="btn btn-dark" href="/users/create/" role="button">Sign Up</a></td>
   {# Assumes you setup the password_reset view in your URLconf #}
   {% comment %} <p><a href="{% url 'password_reset' %}">Lost password?</a></p> {% endcomment %}
 
