@@ -19,12 +19,8 @@ migrate:
 superuser:
 	python manage.py createsuperuser
 
-heroku:
+deploy-heroku:
 	git push heroku master
 
-deploy:
-	docker-compose build
-	docker-compose up -d
-
-down:
-	docker-compose down
+shell:
+	python manage.py shell_plus
