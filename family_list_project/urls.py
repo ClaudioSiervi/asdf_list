@@ -13,25 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from task_list.views import ListTaskView
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views
-from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasks/', include('task_list.urls')),
     path('events/', include('event_list.urls')),
     path('users/', include('users.urls')),
-    # path('accounts/', include('django.contrib.auth.urls')),
-    # url("accounts/login/$", views.LoginView.as_view(), name='login'),
-    # accounts/ logout/ [name='logout']
-    # accounts/ password_change/ [name='password_change']
-    # accounts/ password_change/done/ [name='password_change_done']
-    # url("accounts/password_reset/$", views.PasswordResetView.as_view(), name='password_reset'),
-    # accounts/ password_reset/done/ [name='password_reset_done']
-    # accounts/ reset/<uidb64>/<token>/ [name='password_reset_confirm']
-    # accounts/ reset/done/ [name='password_reset_complete'] 
+
+    path('', ListTaskView.as_view(), name='home'), # temporary
 
 
 ]
