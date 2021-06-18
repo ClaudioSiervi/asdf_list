@@ -6,6 +6,6 @@ from users.views import  create_user_view, LoginView, LogoutView
 urlpatterns = [
     path("login/", LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
-    path("users/", create_user_view, name="user-create"),
+    path("create/", create_user_view, name="user-create"),
 
 ]

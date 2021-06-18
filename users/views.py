@@ -22,4 +22,4 @@ def create_user_view(request):
     else:
         form = CreateUserForm()
 
-    return render(request, "users/create_user.html", {"form": form})
+    return render(request, "create_user.html", {"form": form})
