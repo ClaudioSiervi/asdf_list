@@ -4,7 +4,40 @@ db.sqlite3
 
 .vscode
 
-__pycache__/
+__pycache__/*
 
 task_list/__pycache__/
 staticfiles/
+family_list_project/__pycache__/
+event_list/__pycache__/
+families/__pycache__/
+family_list_project/__pycache__/__init__.cpython-39.pyc
+family_list_project/__pycache__/settings.cpython-39.pyc
+event_list/migrations/__pycache__/0001_initial.cpython-39.pyc
+.gitignore
+event_list/migrations/__pycache__/__init__.cpython-39.pyc
+event_list/migrations/__pycache__/0002_initial.cpython-39.pyc
+event_list/migrations/__pycache__/0003_event_family.cpython-39.pyc
+families/migrations/__pycache__/__init__.cpython-39.pyc
+families/migrations/__pycache__/0001_initial.cpython-39.pyc
+families/migrations/__pycache__/0002_family_members.cpython-39.pyc
+family_list_project/__pycache__/__init__.cpython-39.pyc
+family_list_project/__pycache__/settings.cpython-39.pyc
+family_list_project/managers/__pycache__/__init__.cpython-39.pyc
+family_list_project/managers/__pycache__/users.cpython-39.pyc
+family_list_project/mixins/__pycache__/model.cpython-39.pyc
+task_list/migrations/__pycache__/__init__.cpython-39.pyc
+task_list/migrations/__pycache__/0001_initial.cpython-39.pyc
+task_list/migrations/__pycache__/0002_task_owner.cpython-39.pyc
+task_list/migrations/__pycache__/0003_alter_task_task_date_time.cpython-39.pyc
+task_list/migrations/__pycache__/0004_task_family.cpython-39.pyc
+users/__pycache__/__init__.cpython-39.pyc
+users/__pycache__/admin.cpython-39.pyc
+users/__pycache__/apps.cpython-39.pyc
+users/__pycache__/backends.cpython-39.pyc
+users/__pycache__/forms.cpython-39.pyc
+users/__pycache__/models.cpython-39.pyc
+users/__pycache__/urls.cpython-39.pyc
+users/__pycache__/views.cpython-39.pyc
+users/migrations/__pycache__/__init__.cpython-39.pyc
+users/migrations/__pycache__/0001_initial.cpython-39.pyc
