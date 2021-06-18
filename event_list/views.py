@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.query import QuerySet
 
 from django.views.generic import ListView, DetailView, DeleteView, detail
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -19,9 +20,12 @@ class CreateEventView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('event-list')
 
     def form_valid(self, form: BaseModelForm) -> HttpResponse:
-        if form.is_valid():
-            if form.data["start"] and form.data["finish"]:
-                create_recurrent_tasks()
+        event = form.save(commit=False)
+        # add family to event
+        event.family = self.request.user.family.first()
+        # creates related tasks
+        if form.data["start"] and form.data["finish"]:
+            create_recurrent_tasks()
 
         return super().form_valid(form)
 
@@ -39,8 +43,15 @@ class UpdateEventlView(LoginRequiredMixin, UpdateView):
 
 
 class ListEventView(LoginRequiredMixin, ListView):
-    model = Event
     template_name = "list_events.html"
+    paginate_by = 100
+
+    def get_queryset(self) -> QuerySet:
+        # filters events by user family
+        return Event.objects.filter(
+            family=self.request.user.family.first()
+            )
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
