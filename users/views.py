@@ -1,3 +1,4 @@
+from families.models import Family
 from django.contrib.auth import views as auth_views
 from django.shortcuts import render, redirect
 
@@ -14,12 +15,21 @@ class LogoutView(auth_views.LogoutView):
 
 
 def create_user_view(request):
+
     if request.method == "POST":
+
         form = CreateUserForm(request.POST)
+
         if form.is_valid():
-            form.save()
+
+            user = form.save()
+
+            family = Family.objects.create(name="")
+            family.members.set([user])
+
             return redirect("task-list")
     else:
+
         form = CreateUserForm()
 
     return render(request, "create_user.html", {"form": form})

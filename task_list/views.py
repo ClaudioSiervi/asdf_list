@@ -1,6 +1,9 @@
 from datetime import datetime
 
 from django.conf import settings
+from django.db.models.query import QuerySet
+from django.forms.models import BaseModelForm
+from django.http.response import HttpResponse
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -17,6 +20,14 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'create_task.html'
     success_url = reverse_lazy('task-list')
 
+    def get_success_url(self) -> str:
+        # updates family in task
+        Task.objects.filter(
+            id=self.object.id
+            ).update(
+                family=self.request.user.family.first()
+                )
+
 
 class RetrieveTasklView(LoginRequiredMixin, DetailView):
     model = Task
@@ -31,8 +42,14 @@ class UpdateTaskView(LoginRequiredMixin, UpdateView):
 
 
 class ListTaskView(LoginRequiredMixin, ListView):
-    model = Task
     template_name = "list_task.html"
+    paginate_by = 100
+
+
+    def get_queryset(self) -> QuerySet:
+        # filters tasks by user family
+        return Task.objects.filter(family=self.request.user.family.first())
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

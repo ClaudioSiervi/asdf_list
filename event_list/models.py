@@ -1,3 +1,4 @@
+from families.models import Family
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -37,6 +38,13 @@ class Event(ModelMixin):
         Task,
         verbose_name=_("Tasks"),
         related_name="event"
+    )
+    family = models.ForeignKey(
+        Family,
+        verbose_name=_("Family"),
+        on_delete=models.PROTECT,
+        blank=False, 
+        null=True,
     )
     owner = models.ForeignKey(
         User,

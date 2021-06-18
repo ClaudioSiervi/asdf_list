@@ -1,3 +1,4 @@
+from families.models import Family
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -24,6 +25,13 @@ class Task(ModelMixin):
         choices=TaskStatus.choices,
         default=TaskStatus.CREATED,
         blank=True,
+        null=True,
+    )
+    family = models.ForeignKey(
+        Family,
+        verbose_name=_("Family"),
+        on_delete=models.PROTECT,
+        blank=False, 
         null=True,
     )
     owner = models.ForeignKey(
