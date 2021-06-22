@@ -1,4 +1,4 @@
-from families.models import Family
+from families.models import Family, FamilyInvite
 from django.contrib.auth import views as auth_views
 from django.shortcuts import render, redirect
 
@@ -23,9 +23,16 @@ def create_user_view(request):
         if form.is_valid():
 
             user = form.save()
+            invite = FamilyInvite.objects.filter(guest_email=user.email).first()
+            
+            if invite is not None:
+                # If invite exists, add member to the family host
+                invite.family.members.set([user])
 
-            family = Family.objects.create(name="")
-            family.members.set([user])
+            else: 
+                # If invite not exists, add member to a new family
+                family = Family.objects.create(name="")
+                family.members.set([user])
 
             return redirect("task-list")
     else:
