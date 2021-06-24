@@ -1,3 +1,4 @@
+
 """
 Django settings for family_list_project project.
 
@@ -42,7 +43,10 @@ DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 HOST = env('HOST')
 
-ALLOWED_HOSTS = ["https://gentle-journey-77642.herokuapp.com/", "localhost", ]
+ALLOWED_HOSTS = [
+    "https://gentle-journey-77642.herokuapp.com/",
+    "localhost",
+]
 
 
 AUTH_USER_MODEL = 'users.User'
@@ -109,6 +113,21 @@ LOGIN_REDIRECT_URL = '/tasks/'
 
 WSGI_APPLICATION = 'family_list_project.wsgi.application'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
