@@ -15,6 +15,7 @@ dj-database-url = "*"
 psycopg2 = "*"
 django-heroku = "*"
 whitenoise = "*"
+sentry-sdk = "*"
 
 [dev-packages]
 
