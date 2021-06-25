@@ -46,10 +46,3 @@ class Event(ModelMixin):
         blank=False, 
         null=True,
     )
-    owner = models.ForeignKey(
-        User,
-        verbose_name=_("Owner"),
-        on_delete=models.PROTECT,
-        blank=True, 
-        null=True,
-    )
