@@ -9,7 +9,9 @@ db.sqlite3
 __pycache__/*
 
 task_list/__pycache__/
-staticfiles/
+staticfiles/admin/
+staticfiles/django_extensions/
+staticfiles/staticfiles.json
 family_list_project/__pycache__/
 event_list/__pycache__/
 families/__pycache__/
