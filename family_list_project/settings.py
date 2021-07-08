@@ -190,7 +190,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_TMP = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 os.makedirs(STATIC_TMP, exist_ok=True)
 os.makedirs(STATIC_ROOT, exist_ok=True)
@@ -201,7 +201,7 @@ os.makedirs(STATIC_ROOT, exist_ok=True)
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    'static',
+    os.path.join(BASE_DIR, 'staticfiles')
 )
 
 
