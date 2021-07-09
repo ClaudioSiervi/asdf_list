@@ -200,9 +200,9 @@ os.makedirs(STATIC_ROOT, exist_ok=True)
 
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'staticfiles')
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'staticfiles')
+# )
 
 
 # Simplified static file serving.
