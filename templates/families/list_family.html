@@ -1,0 +1,31 @@
+{% block content %}
+
+<h1>Day {{ now }} </h1>
+
+<table class="table">
+    <tr>
+      <th>Done</th>
+      <th>Description</th>
+      <th>User</th>
+      <th>Rating</th>
+      <th>Event Date</th>
+      <th><a class="btn btn-dark" href="/events/create/" role="button">Create</a></th>
+    </tr>
+
+    {% for event in object_list %}
+    <tr>
+      <td>{{ event.name }}</td>
+      <td>{{ event.description }}</td>
+      <td>{{ event.owner }}</td>
+      <td>{{ event.rating }}</td>
+      <td>{{ event.start | date }}</td> 
+      <td>{{ event.finish | date }}</td> 
+      <td>{{ event.tasks }}</td>
+      <td><a class="btn btn-dark" href="/events/{{ event.id }}/retrieve/" role="button">Detail</a></td>
+      <td><a class="btn btn-dark" href="/events/{{ event.id }}" role="button">Update</a></td>
+      <td><a class="btn btn-dark" href="/events/{{ event.id }}/delete/" role="button">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

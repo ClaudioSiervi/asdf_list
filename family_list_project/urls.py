@@ -22,6 +22,7 @@ urlpatterns = [
     path('tasks/', include('task_list.urls')),
     path('events/', include('event_list.urls')),
     path('users/', include('users.urls')),
+    path('families/', include('families.urls')),
 
     path('', ListTaskView.as_view(), name='home'), # temporary
 
