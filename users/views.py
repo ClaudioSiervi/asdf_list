@@ -39,4 +39,4 @@ def create_user_view(request):
 
         form = CreateUserForm()
 
-    return render(request, "create_user.html", {"form": form})
+    return render(request, "users/create_user.html", {"form": form})

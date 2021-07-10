@@ -21,7 +21,7 @@ class ListFamilyView(LoginRequiredMixin, ListView):
     paginate_by = 10
 
     def get_queryset(self) -> QuerySet:
-        # filters events by user family
+        # filters user family
         return Family.objects.filter(
             id=self.request.user.family.first().id
             )

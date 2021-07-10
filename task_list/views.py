@@ -17,7 +17,7 @@ from task_list.forms import CreateTaskForm, UpdateTaskForm
 class CreateTaskView(LoginRequiredMixin, CreateView):
     model = Task
     form_class = CreateTaskForm
-    template_name = 'create_task.html'
+    template_name = 'task_list/create_task.html'
     success_url = reverse_lazy('task-list')
 
     def form_valid(self, form: BaseModelForm) -> HttpResponse:
@@ -28,18 +28,18 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
 
 class RetrieveTasklView(LoginRequiredMixin, DetailView):
     model = Task
-    template_name = 'retrieve_task.html'
+    template_name = 'task_list/retrieve_task.html'
 
 
 class UpdateTaskView(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = UpdateTaskForm
-    template_name = 'update_task.html'
+    template_name = 'task_list/update_task.html'
     success_url = reverse_lazy('task-list')
 
 
 class ListTaskView(LoginRequiredMixin, ListView):
-    template_name = "list_task.html"
+    template_name = "task_list/list_task.html"
     paginate_by = 100
 
     def get_queryset(self) -> QuerySet:
@@ -55,7 +55,7 @@ class ListTaskView(LoginRequiredMixin, ListView):
 
 class DeleteTaskView(LoginRequiredMixin, DeleteView):
     model = Task
-    template_name = 'delete_task.html'
+    template_name = 'task_list/delete_task.html'
     success_url = reverse_lazy('task-list')
 
 
