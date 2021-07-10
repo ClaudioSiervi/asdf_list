@@ -13,10 +13,10 @@ class CreateFamilyForm(forms.ModelForm):
 
 class UpdateFamilyForm(forms.ModelForm):
     name = forms.CharField()
-    members = forms.ModelMultipleChoiceField(
-        queryset=User.objects.all(),
-        widget=forms.CheckboxSelectMultiple
-    )
+    # members = forms.ModelMultipleChoiceField(
+    #     queryset=User.objects.all(),
+    #     widget=forms.CheckboxSelectMultiple
+    # )
     class Meta:
         model = Family
-        fields = ("name", "members")
+        fields = ("name",)

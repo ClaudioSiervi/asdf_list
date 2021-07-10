@@ -22,6 +22,7 @@ class UpdateFamilylView(LoginRequiredMixin, UpdateView):
     template_name = 'families/update_family.html'
     success_url = reverse_lazy('family-list')
 
+
 class ListFamilyView(LoginRequiredMixin, ListView):
     template_name = "families/list_family.html"
     paginate_by = 10

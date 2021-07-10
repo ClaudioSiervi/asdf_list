@@ -72,3 +72,6 @@ class Task(ModelMixin):
 
     def get_absolute_url(self):
         return reverse('task-update', kwargs={'pk': self.pk})
+
+    def __str__(self) -> str:
+        return f"{self.name}"
