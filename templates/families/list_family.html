@@ -14,7 +14,11 @@
     {% for family in object_list %}
     <tr>
       <td>{{ family.name }}</td>
-      <td>{{ family.members }}</td>
+      <td>
+          {% for user in family.members.all %}
+              <li>{{ user }}</li>
+          {% endfor %}
+      </td>
 
       <td><a class="btn btn-dark" href="/families/{{ family.id }}/retrieve/" role="button">Detail</a></td>
       <td><a class="btn btn-dark" href="/families/{{ family.id }}" role="button">Update</a></td>

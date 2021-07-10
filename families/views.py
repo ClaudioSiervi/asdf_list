@@ -16,6 +16,12 @@ class CreateFamilytView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('family-list')
 
 
+class UpdateFamilylView(LoginRequiredMixin, UpdateView):
+    model = Family
+    form_class = UpdateFamilyForm
+    template_name = 'families/update_family.html'
+    success_url = reverse_lazy('family-list')
+
 class ListFamilyView(LoginRequiredMixin, ListView):
     template_name = "families/list_family.html"
     paginate_by = 10
@@ -25,10 +31,3 @@ class ListFamilyView(LoginRequiredMixin, ListView):
         return Family.objects.filter(
             id=self.request.user.family.first().id
             )
-
-
-class UpdateFamilylView(LoginRequiredMixin, UpdateView):
-    model = Family
-    form_class = UpdateFamilyForm
-    template_name = 'families/update_family.html'
-    success_url = reverse_lazy('family-list')
